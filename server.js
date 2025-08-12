@@ -27,10 +27,6 @@ connectDB();
 
 
 const allowedOrigins = [
-  // "http://localhost:5173", // User frontend
-  // "http://localhost:5174", // Admin frontend
-  // "https://new-online-delivery-frontend.vercel.app",
-  // "https://new-admin-gray.vercel.app",
 "https://frontend-food-ai.vercel.app",
 "https://admin-food-ai.vercel.app"
 ];
@@ -77,3 +73,10 @@ app.get("/", (req, res) => {
 app.listen(PORT, () => {
   console.log(`✅ Server running at http://localhost:${PORT}`);
 });
+
+
+
+  // "http://localhost:5173", // User frontend
+  // "http://localhost:5174", // Admin frontend
+  // "https://new-online-delivery-frontend.vercel.app",
+  // "https://new-admin-gray.vercel.app",

@@ -29,6 +29,9 @@ const listFood = async (req, res) => {
   }
 };
 
+
+
+
 // ✅ Add food (upload to Cloudinary from memory)
 const addFood = async (req, res) => {
   try {
@@ -53,15 +56,12 @@ const addFood = async (req, res) => {
 
     const result = await streamUpload(req.file.buffer);
 
-    // ✅ Ensure category defaults to Vegetarian if not provided
-    const category = req.body.category?.trim() || "Vegetarian";
-
     // Save to MongoDB with correct data types
     const food = new foodModel({
-      name: req.body.name.trim(),
-      description: req.body.description.trim(),
+      name: req.body.name,
+      description: req.body.description,
       price: Number(req.body.price), // ✅ ensure number
-      category, // ✅ now always Vegetarian if empty
+      category: req.body.category,
       image: result.secure_url // ✅ full Cloudinary URL
     });
 
@@ -73,6 +73,7 @@ const addFood = async (req, res) => {
     res.json({ success: false, message: "Error adding food" });
   }
 };
+
 
 // ✅ Remove food
 const removeFood = async (req, res) => {
